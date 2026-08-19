@@ -117,7 +117,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`hidden lg:block px-6 py-2 font-semibold rounded-full bg-linear-to-r ${colors.button} text-white shadow-md hover:shadow-lg transition-shadow`}>
+              className={`hidden lg:block px-6 py-2 font-semibold rounded-xl bg-linear-to-r ${colors.button} text-white shadow-md hover:shadow-lg transition-shadow`}>
                 Hire Me
             </motion.a>
           </div>
@@ -189,7 +189,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                   href="#contact"
                   onClick={() => setIsMenuOpen(false)}
                   whileTap={{ scale: 0.95 }}
-                  className={`block py-3 px-4 text-center font-semibold rounded-lg bg-linear-to-r ${colors.button} text-white shadow-md`}>
+                  className={`block py-3 px-4 text-center font-semibold rounded-xl bg-linear-to-r ${colors.button} text-white shadow-md`}>
                   Hire Me
                 </motion.a>
               </div>
@@ -197,7 +197,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           )}
 
 
-      </ motion.nav>
+      </motion.nav>
     </div>
   )
 };

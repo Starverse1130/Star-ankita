@@ -1,4 +1,3 @@
-import React from 'react'
 import about from '../assets/images/about.png'
 
 const About = ({ darkMode }) => {
@@ -22,7 +21,7 @@ const About = ({ darkMode }) => {
                         </div>
                         <img
                             src={about}
-                            alt="Abouy Image"
+                            alt="About Image"
                             className='absolute inset-0 w-full h-full
                             object-cover z-10 transition-all duration-300'
                             data-aos='zoom-in'
@@ -52,7 +51,11 @@ const About = ({ darkMode }) => {
                         ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
                         data-aos='fade-up'
                         data-aos-delay='500'>
-                        Hi, I'm Ankita, a Frontend Developer who loves turning ideas into clean, responsive, and interactive web interfaces. I specialize in React.js, JavaScript, and modern UI design, with a strong focus on writing code that's both functional and visually polished. Currently gaining hands-on experience as a Full Stack Developer Intern, I'm constantly learning and building projects that sharpen my frontend skills.
+                        Hi, I'm Ankita, a Full Stack Developer passionate about building clean,
+                        responsive, and user-friendly web applications. Currently working as a
+                        Full Stack Development Intern at <b>DVertex</b>, I'm gaining hands-on experience
+                        across both frontend and backend development.
+                        
                     </p>
                     <div
                         className='flex flex-wrap justify-center
@@ -93,11 +96,11 @@ const About = ({ darkMode }) => {
                         </div>
                         
                     </div>
-                    <button className={`w-full sm:w-auto border-2
+                    <a href="#skills" className={`w-full sm:w-auto border-2
                         border-orange-500 inline-flex items-center
                         justify-center py-2 px-4 sm:px-6
                         hover:shadow-[0_0_40px_rgb(255,165,0,0.7)]
-                        rounded-full text-base sm:text-lg font-semibold
+                        rounded-xl text-base sm:text-lg font-semibold
                         transition-all duration-300 transform
                         ${darkMode
                         ? 'text-white bg-orange-500/10'
@@ -105,7 +108,7 @@ const About = ({ darkMode }) => {
                         data-aos='fade-up'
                         data-aos-delay='800'>
                             Learn More
-                        </button>
+                        </a>
                 </article>
             </div>
         </section>

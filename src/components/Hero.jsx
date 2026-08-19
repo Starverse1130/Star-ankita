@@ -1,16 +1,14 @@
 import { Download as DownloadIcon, Mail } from 'lucide-react'
 import linkedin from '../assets/icons/linkedin1.png'
 import github from '../assets/icons/github1.png'
-import instagram from '../assets/icons/instagram.png'
 import hero from '../assets/images/hero.png'
 import hi from '../assets/hi.png'
-import CV from '../assets/pdf/CV.pdf'
+import CV from '../assets/pdf/Resume.pdf'
 
 const Hero = ({ darkMode }) => {
     const socialIcons = [
-        { icon: linkedin, alt: 'Linkedin'},
-        { icon: github, alt: 'github'},
-        { icon: instagram, alt: 'instagram'},
+        { icon: linkedin, alt: 'Linkedin', url: 'https://www.linkedin.com/in/ankita-ankita-a627323aa/'},
+        { icon: github, alt: 'github', url: 'https://github.com/sonwanisonwani81-lang'},
     ];
 
     const darkTheme = {
@@ -48,8 +46,9 @@ const Hero = ({ darkMode }) => {
                             {socialIcons.map((social, index) => (
                                 <a
                                     key={index}
-                                    href='#'
+                                    href={social.url}
                                     target='_blank'
+                                    rel='noopener noreferrer'
                                     data-aos-delay={`${400 + index * 100}`}
                                     className='transform hover:scale-110
                                     transition-transform duration-300'>
@@ -87,7 +86,7 @@ const Hero = ({ darkMode }) => {
                                     inline-flex items-center justify-center text-white
                                     bg-linear-to-r from-orange-500 to-amber-500 border-0
                                     py-3 px-6 sm:px-8 hover:shadow-[0_0_40px_rgb(255,165,0,0.7)]
-                                    rounded-full text-base sm:text-lg font-semibold transition-all
+                                    rounded-xl text-base sm:text-lg font-semibold transition-all
                                     duration-300 transform'>
                                         <DownloadIcon className='w-4 h-4 sm:h-5 sm:w-5 mr-2' />
                                         Download CV
@@ -98,7 +97,7 @@ const Hero = ({ darkMode }) => {
                                     inline-flex items-center ${theme.buttonSecondary}
                                     justify-center border-0
                                     py-3 px-6 sm:px-8 hover:shadow-[0_0_40px_rgb(255,165,0,0.7)]
-                                    rounded-full text-base sm:text-lg font-semibold transition-all
+                                    rounded-xl text-base sm:text-lg font-semibold transition-all
                                     duration-300 transform`}>
                                         <Mail className='w-4 h-4 sm:w-5 sm:h-5 mr-2' />
                                         Contact Me

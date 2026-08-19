@@ -94,7 +94,7 @@ const Projects = ({ darkMode }) => {
                                 background: darkMode
                                     ? 'linear-gradient(to right, #1f2937, #111827)'
                                     : 'linear-gradient(to right, #ffffff, #f9fafb)',
-                                borderColor: darkMode ? '#374151' : 'e5e7eb'
+                                borderColor: darkMode ? '#374151' : '#e5e7eb'
                             }}
                             className='group rounded-xl border duration-300
                             hover:border-orange-500/50 transition-all'
@@ -142,14 +142,16 @@ const Projects = ({ darkMode }) => {
 
                                 <div className='flex gap-2'>
                                     <a
-                                        href="#"
+                                        href="https://github.com/sonwanisonwani81-lang"
+                                        target='_blank'
+                                        rel='noopener noreferrer'
                                         style={{
                                             backgroundColor: darkMode ? '#374151' : '#f3f4f6',
                                             color: darkMode ? 'white' : '#374151'
                                         }}
                                         className='flex-1 flex items-center
                                         justify-center gap-1.5 px-3 py-2
-                                        text-sm rounded-lg hover:opacity-90
+                                        text-sm rounded-xl hover:opacity-90
                                         transition-colors'
                                         data-aos='zoom-in'
                                         data-aos-delay='300'
@@ -161,12 +163,13 @@ const Projects = ({ darkMode }) => {
                                     {/* Demo  */}
                                     <a
                                         href="#"
+                                        onClick={(e) => e.preventDefault()}
                                         style={{
                                             background: 'linear-gradient(to right, #f97316, #f59e0b)',
                                         }}
                                         className='flex-1 flex items-center
                                         justify-center gap-1.5 px-3 py-2 text-white
-                                        text-sm rounded-lg hover:shadow-lg
+                                        text-sm rounded-xl hover:shadow-lg
                                         hover:shadow-orange-500/25 transition-all'
                                         data-aos='zoom-in'
                                         data-aos-delay='400'
@@ -182,19 +185,21 @@ const Projects = ({ darkMode }) => {
 
                 <div className='text-center mt-10'>
                     <a
-                        href="#"
+                        href="https://github.com/sonwanisonwani81-lang"
+                        target='_blank'
+                        rel='noopener noreferrer'
                         style={{
                             background: 'linear-gradient(to right, #f97316, #f59e0b)',
                         }}
                         className='inline-flex items-center font-semibold
                         gap-2 px-7 py-4 text-white
-                        text-sm rounded-full hover:shadow-lg
+                        text-sm rounded-xl hover:shadow-lg
                         hover:shadow-orange-500/25 transition-all'
                         data-aos='zoom-in'
                         data-aos-delay='400'
                     >
                         <FaGithub />
-                        <span>View All Ptojects</span>
+                        <span>View All Projects</span>
                         <FaExternalLinkAlt className='text-sm'/>
                     </a>
                 </div>
