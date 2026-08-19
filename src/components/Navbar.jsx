@@ -1,7 +1,17 @@
-import { motion } from "framer-motion";
-import { useState } from "react"
+import PropTypes from 'prop-types'
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react"
 import { Sun, Moon, X, Menu } from 'lucide-react';
 
+/**
+ * Navbar Component
+ * Fixed floating navbar with navigation links, dark mode toggle,
+ * mobile hamburger menu, and scroll-based active section tracking.
+ *
+ * @param {Object} props
+ * @param {boolean} props.darkMode - Whether dark mode is active
+ * @param {Function} props.toggleDarkMode - Function to toggle dark mode
+ */
 const Navbar = ({ darkMode, toggleDarkMode }) => {
 
   const [activeSection, setActiveSection] = useState('home');
@@ -14,6 +24,32 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     { name: 'Projects', link: '#projects' },
     { name: 'Contact', link: '#contact' }
   ];
+
+  // Scroll-based active section tracking
+  useEffect(() => {
+    const sections = navItems.map(item => document.querySelector(item.link))
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id')
+            if (id) setActiveSection(id)
+          }
+        })
+      },
+      {
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: 0
+      }
+    )
+
+    sections.forEach((section) => {
+      if (section) observer.observe(section)
+    })
+
+    return () => observer.disconnect()
+  }, [])
 
   const lightColors = {
     navBg: 'bg-linear-to-br from-orange-200 to-white',
@@ -43,17 +79,17 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   };
 
   return (
-    <div className="flex justify-center w-full fixed z-50 mt-4">
+    <div className="flex justify-center w-full fixed z-50 mt-2 sm:mt-4">
       <motion.nav
         initial={{y: -100}}
         animate={{y: 0}}
         transition={{ duration: 0.5}}
-        className={`flex items-center justify-center ${colors.navBg} backdrop-blur-lg rounded-2xl px-4 lg:px-8 py-2 shadow-lg`}>
+        className={`flex items-center justify-center ${colors.navBg} backdrop-blur-xl rounded-2xl px-4 lg:px-8 py-2 shadow-lg border ${darkMode ? 'border-white/10' : 'border-white/30'}`}>
           <div className="flex items-center justify-between w-full space-x-6 lg:space-x-8">
 
             {/* Logo */}
             <motion.a
-            href="/"
+            href="#home"
             whileHover={{ scale: 1.05}}
             className="flex items-center space-x-2">
               <span className={`text-xl font-bold ${colors.textPrimary}`}>
@@ -146,6 +182,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             </motion.button>
           </div>
 
+          <AnimatePresence>
           {isMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
@@ -195,12 +232,20 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               </div>
             </motion.div>
           )}
+          </AnimatePresence>
 
 
       </motion.nav>
     </div>
   )
 };
+
+Navbar.propTypes = {
+  /** Whether dark mode is active */
+  darkMode: PropTypes.bool.isRequired,
+  /** Function to toggle dark mode */
+  toggleDarkMode: PropTypes.func.isRequired,
+}
 
 export default Navbar
 

@@ -9,8 +9,20 @@ body {
     color-scheme: dark;
 }
 
+@media (min-width: 1024px) {
+    .dark * {
+        cursor: none !important;
+    }
+}
+
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Prevent horizontal overflow */
+body {
+    overflow-x: hidden;
 }
 
 .star-shape {

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import django from '../assets/icons/django.png'
 import html from '../assets/icons/html.png'
 import css from '../assets/icons/css.png'
@@ -7,7 +8,13 @@ import mysql from '../assets/icons/mysql.png'
 import python from '../assets/icons/python.png'
 import git from '../assets/icons/git.png'
 
-
+/**
+ * Skills Section Component
+ * Displays skill cards with icons, proficiency bars, and hover effects.
+ *
+ * @param {Object} props
+ * @param {boolean} props.darkMode - Whether dark mode is active
+ */
 const Skills = ({ darkMode }) => {
 
     const skills = [
@@ -35,7 +42,7 @@ const Skills = ({ darkMode }) => {
             style={{
                 backgroundColor: darkMode ? "#111827" : "#f9fafb"
             }}
-            className='relative py-24 overflow-hidden'>
+            className='relative py-16 sm:py-24 overflow-hidden'>
             <div className='relative overflow-hidden'>
                 <div className='container px-5 mx-auto'>
                     <div className='text-center mb-10' data-aos='fade-up'>
@@ -82,17 +89,27 @@ const Skills = ({ darkMode }) => {
                                     }}
                                     className='h-full p-6 rounded-2xl border
                                     hover:border-orange-500/50 transition-all
-                                    duration-300 hover:-translate-y-2 group
-                                    hover:shadow-[0_0_30px_rgb(255,165,0,0.15)]'>
+                                    duration-500 hover:-translate-y-3 group
+                                    hover:shadow-[0_8px_40px_rgb(255,165,0,0.2)]'>
                                     <div className='flex items-center mb-6'>
-                                        <img
-                                            src={skill.icon}
-                                            alt={skill.name}
-                                            className='w-16 h-16 object-contain
-                                            group-hover:scale-110 transition-transform
-                                            duration-300' />
+                                        <div className='relative'>
+                                            {/* Icon glow */}
+                                            <div className='absolute inset-0 bg-orange-500/20 rounded-full
+                                                blur-xl opacity-0 group-hover:opacity-100
+                                                transition-opacity duration-500' />
+                                            <img
+                                                src={skill.icon}
+                                                alt={skill.name}
+                                                loading='lazy'
+                                                decoding='async'
+                                                className='relative w-16 h-16 object-contain
+                                                group-hover:scale-125 group-hover:rotate-6
+                                                transition-all duration-500 ease-out' />
+                                        </div>
                                         <h3
-                                            className='text-2xl font-bold ml-4'
+                                            className='text-2xl font-bold ml-4
+                                            group-hover:text-orange-400 transition-colors
+                                            duration-300'
                                             style={{
                                                 color: darkMode ? 'white' : '#1f2937'
                                             }}>
@@ -127,15 +144,17 @@ const Skills = ({ darkMode }) => {
                                         <div
                                             className={`h-full rounded-full bg-linear-to-r
                                             ${skill.color} transition-all duration-1000
-                                            ease-out`}
+                                            ease-out group-hover:shadow-[0_0_12px_rgba(255,165,0,0.4)]`}
                                             style={{ width: `${skill.level}%` }}>
                                         </div>
                                     </div>
                                     <div className={`mt-6 pt-4 border-t
-                                    ${darkMode ? 'border-gray-700' : 'border-gray-300'}`}>
+                                    transition-colors duration-300
+                                    ${darkMode ? 'border-gray-700 group-hover:border-orange-500/30' : 'border-gray-300 group-hover:border-orange-400/30'}`}>
                                         <div
-                                            className='h-1 rounded-full opacity-70
-                                            group-hover:w-full transition-all duration-500 w-1/3'
+                                            className='h-1 rounded-full opacity-60
+                                            group-hover:opacity-100 group-hover:w-full
+                                            transition-all duration-500 w-1/3'
                                             style={{
                                                 background: 'linear-gradient(to right, #f97316, #f59e0b)'
                                             }}>
@@ -150,6 +169,11 @@ const Skills = ({ darkMode }) => {
         </section>
     );
 };
+
+Skills.propTypes = {
+  /** Whether dark mode is active */
+  darkMode: PropTypes.bool.isRequired,
+}
 
 export default Skills
 

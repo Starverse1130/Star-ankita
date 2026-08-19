@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowUp } from 'lucide-react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import ErrorBoundary from "./components/ErrorBoundary"
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
 import About from "./components/About"
@@ -10,14 +11,19 @@ import Skills from "./components/Skills"
 import Projects from "./components/Projects"
 import Contact from "./components/Contact"
 import Footer from "./components/Footer"
+import CustomCursor from "./components/CustomCursor"
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(true)
   const [showScrollTop, setShowScrollTop] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300)
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0
+      setScrollProgress(progress)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
@@ -43,6 +49,7 @@ const App = () => {
   };
 
   return (
+    <ErrorBoundary>
     <div className={
       darkMode
       ? 'bg-linear-to-br from-gray-900 via-[#0d182e] to-gray-900 min-h-screen'
@@ -55,6 +62,16 @@ const App = () => {
       <Projects darkMode = {darkMode} />
       <Contact darkMode = {darkMode} />
       <Footer darkMode = {darkMode} />
+
+      <CustomCursor darkMode={darkMode} />
+
+      {/* Scroll Progress Bar */}
+      <div className='fixed top-0 left-0 w-full h-1 z-[100]'>
+        <div
+          className='h-full bg-linear-to-r from-orange-500 via-amber-400 to-orange-500 transition-[width] duration-150 ease-out'
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
 
       <AnimatePresence>
         {showScrollTop && (
@@ -76,6 +93,7 @@ const App = () => {
         )}
       </AnimatePresence>
     </div>
+    </ErrorBoundary>
   )
 }
 
