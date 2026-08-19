@@ -1,6 +1,7 @@
 import { Download as DownloadIcon, Mail } from 'lucide-react'
-import linkedin from '../assets/icons/linkedin.png'
-import github from '../assets/icons/github.png'
+import linkedin from '../assets/icons/linkedin1.png'
+import github from '../assets/icons/github1.png'
+import instagram from '../assets/icons/instagram.png'
 import hero from '../assets/images/hero.png'
 import hi from '../assets/hi.png'
 import CV from '../assets/pdf/CV.pdf'
@@ -9,6 +10,7 @@ const Hero = ({ darkMode }) => {
     const socialIcons = [
         { icon: linkedin, alt: 'Linkedin'},
         { icon: github, alt: 'github'},
+        { icon: instagram, alt: 'instagram'},
     ];
 
     const darkTheme = {
@@ -54,7 +56,7 @@ const Hero = ({ darkMode }) => {
                                     <img
                                         src={social.icon}
                                         alt={social.alt}
-                                        className={`w-8 h-8 sm:w-10 sm:h-10
+                                        className={`w-10 h-10 sm:w-12 sm:h-12
                                         object-contain ${darkMode
                                         ? ''
                                         : 'filter brightness-75'}`} />
@@ -65,7 +67,7 @@ const Hero = ({ darkMode }) => {
                             lg:text-5xl mb-4 font-bold ${theme.textPrimary}`}
                             data-aos='fade-up'
                             data-aos-delay='500'>
-                            Hi, I'm QualiCode
+                            Hi, I'm Ankita
                         </h1>
                         <p className={`mb-6 sm:mb-8 leading-relaxed max-w-md
                             sm:max-w-lg ${theme.textSecondary}`}
