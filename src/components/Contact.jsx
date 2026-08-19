@@ -40,7 +40,7 @@ const Contact = ({ darkMode }) => {
                             color: darkMode ? '#d1d5db' : '#6b7280'
                         }}
                     >
-                        Let's discuss your project
+                        Have a project in mind? Let's build something great together.
                     </p>
                 </div>
 

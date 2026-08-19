@@ -60,8 +60,7 @@ const Skills = ({ darkMode }) => {
                             style={{
                                 color: darkMode ? '#d1d5db' : '#4b5563'
                             }}>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing
-                            elit. Eum
+                            These are the tools I use every day to build things I'm proud of.
                         </p>
                     </div>
                     <div

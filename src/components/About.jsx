@@ -52,11 +52,7 @@ const About = ({ darkMode }) => {
                         ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
                         data-aos='fade-up'
                         data-aos-delay='500'>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Dolore suscipit expedita blanditiis temporibus
-                        nostrum nulla fugit consequuntur! Ullam earum
-                        perspiciatis sit ea, asperiores dolorum illum
-                        temporibus quidem? Iusto, officia mollitia!
+                        Hi, I'm Ankita, a Frontend Developer who loves turning ideas into clean, responsive, and interactive web interfaces. I specialize in React.js, JavaScript, and modern UI design, with a strong focus on writing code that's both functional and visually polished. Currently gaining hands-on experience as a Full Stack Developer Intern, I'm constantly learning and building projects that sharpen my frontend skills.
                     </p>
                     <div
                         className='flex flex-wrap justify-center
@@ -65,12 +61,25 @@ const About = ({ darkMode }) => {
                         <div
                             className='text-center'
                             data-aos='zoom-in'
-                            data-aos-delay='600'>
+                            data-aos-delay='700'>
                             <div className='text-2xl sm:text-3xl
-                            lg:text-4xl font-bold text-orange-400'>5+</div>
+                            lg:text-4xl font-bold text-orange-400'>
+                                2
+                            </div>
                             <div className={`text-xs sm:text-sm lg:text-base
                             ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}
-                            >Education</div>
+                            >Internship 
+                            </div>
+                        </div>
+                        <div
+                            className='text-center'
+                            data-aos='zoom-in'
+                            data-aos-delay='600'>
+                            <div className='text-2xl sm:text-3xl
+                            lg:text-4xl font-bold text-orange-400'>3+</div>
+                            <div className={`text-xs sm:text-sm lg:text-base
+                            ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}
+                            >Projects Completed</div>
                         </div>
                         <div
                             className='text-center'
@@ -80,21 +89,9 @@ const About = ({ darkMode }) => {
                             lg:text-4xl font-bold text-orange-400'>10+</div>
                             <div className={`text-xs sm:text-sm lg:text-base
                             ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}
-                            >Years Experience</div>
+                            >Certifications</div>
                         </div>
-                        <div
-                            className='text-center'
-                            data-aos='zoom-in'
-                            data-aos-delay='700'>
-                            <div className='text-2xl sm:text-3xl
-                            lg:text-4xl font-bold text-orange-400'>
-                                100+
-                            </div>
-                            <div className={`text-xs sm:text-sm lg:text-base
-                            ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}
-                            >Projects Completed
-                            </div>
-                        </div>
+                        
                     </div>
                     <button className={`w-full sm:w-auto border-2
                         border-orange-500 inline-flex items-center

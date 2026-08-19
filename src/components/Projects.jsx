@@ -1,4 +1,9 @@
 import project1 from '../assets/projects/project1.png'
+import project2 from '../assets/projects/project2.png'
+import project3 from '../assets/projects/project3.png'
+import project4 from '../assets/projects/project4.png'
+import project5 from '../assets/projects/project5.png'
+import project6 from '../assets/projects/project6.png'
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 
 const Projects = ({ darkMode }) => {
@@ -6,45 +11,45 @@ const Projects = ({ darkMode }) => {
         {
             id: 1,
             title: 'E-Commerce Platform',
-            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+            desc: 'A modern online store with product listing, cart, and smooth checkout flow. Built with a focus on clean UI and fast performance.',
             image: project1,
-            tags: ['React', 'Node.js', "MongoDB"]
+            tags: ['React', 'Node.js', 'MongoDB']
         },
         {
             id: 2,
-            title: 'E-Commerce Platform',
-            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-            image: project1,
-            tags: ['React', 'Node.js', "MongoDB"]
+            title: 'Recipe Finder App',
+            desc: 'A responsive app to search and save recipes based on ingredients. Features category filters and a clean card-based layout.',
+            image: project2,
+            tags: ['React', 'API Integration', 'Tailwind CSS']
         },
         {
             id: 3,
-            title: 'E-Commerce Platform',
-            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-            image: project1,
-            tags: ['React', 'Node.js', "MongoDB"]
+            title: 'Portfolio Website',
+            desc: 'A personal portfolio site showcasing projects and skills with smooth animations. Fully responsive across all devices.',
+            image: project3,
+            tags: ['React', 'Framer Motion', 'CSS3']
         },
         {
             id: 4,
-            title: 'E-Commerce Platform',
-            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-            image: project1,
-            tags: ['React', 'Node.js', "MongoDB"]
+            title: 'Task Management App',
+            desc: 'A simple and intuitive to-do app with drag-and-drop task organization. Helps users track daily tasks with ease.',
+            image: project4,
+            tags: ['React', 'JavaScript', 'LocalStorage']
         },
         {
             id: 5,
-            title: 'E-Commerce Platform',
-            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-            image: project1,
-            tags: ['React', 'Node.js', "MongoDB"]
+            title: 'Weather Dashboard',
+            desc: 'A real-time weather app showing current conditions and a 5-day forecast. Clean UI with dynamic backgrounds based on weather.',
+            image: project5,
+            tags: ['React', 'OpenWeather API', 'CSS3']
         },
         {
             id: 6,
-            title: 'E-Commerce Platform',
-            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-            image: project1,
-            tags: ['React', 'Node.js', "MongoDB"]
-        },
+            title: 'Blog Website',
+            desc: 'A minimal blogging platform with category-based posts and a clean reading experience. Fully responsive and fast-loading.',
+            image: project6,
+            tags: ['React', 'JavaScript', 'Tailwind CSS']
+        }
     ]
 
     return (
@@ -76,7 +81,7 @@ const Projects = ({ darkMode }) => {
                         style={{
                             color: darkMode ? '#d1d5db' : '#6b7280'
                         }}>
-                        A showcase of my recent work
+                        A few projects I've built while learning and growing as a frontend developer.
                     </p>
                 </div>
 

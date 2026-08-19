@@ -73,10 +73,7 @@ const Hero = ({ darkMode }) => {
                             sm:max-w-lg ${theme.textSecondary}`}
                             data-aos='fade-up'
                             data-aos-delay='600'>
-                            Lorem ipsum dolor sit amet consectetur,
-                            adipisicing elit. Facilis et harum dolorem sit minus
-                            illo nostrum? Tempore, nobis. Recusandae neque
-                            exercitationem voluptates tempore tempora sequi
+                            Frontend Developer specializing in React.js, JavaScript aur modern UI design. Currently interning as a Full Stack Developer, I turn ideas into fast, responsive, and user-friendly interfaces.
                         </p>
 
                         {/* Buttons  */}
