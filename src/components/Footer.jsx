@@ -88,7 +88,7 @@ const Footer = ({ darkMode }) => {
                             <FaHeart className="text-red-500" />
                             by
                             <span className="mt-1 text-[#f97316]">
-                                QualiCode
+                                Ankita
                             </span>
                         </p>
                     </div>

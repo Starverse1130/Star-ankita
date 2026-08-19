@@ -1,4 +1,4 @@
-import contactImg from '../assets/contact.png'
+import contactImg from '../assets/images/contact.png'
 
 const Contact = ({ darkMode }) => {
     return (

@@ -1,18 +1,14 @@
 import { Download as DownloadIcon, Mail } from 'lucide-react'
-import instagram from '../assets/instagram.png'
-import tiktok from '../assets/tiktok.png'
-import github from '../assets/github.png'
-import youtube from '../assets/youtube.png'
-import hero from '../assets/hero.png'
+import linkedin from '../assets/icons/linkedin.png'
+import github from '../assets/icons/github.png'
+import hero from '../assets/images/hero.png'
 import hi from '../assets/hi.png'
-import CV from '../assets/CV.pdf'
+import CV from '../assets/pdf/CV.pdf'
 
 const Hero = ({ darkMode }) => {
     const socialIcons = [
-        { icon: instagram, alt: 'Instagram'},
-        { icon: tiktok, alt: 'tiktok'},
+        { icon: linkedin, alt: 'Linkedin'},
         { icon: github, alt: 'github'},
-        { icon: youtube, alt: 'youtube'},
     ];
 
     const darkTheme = {

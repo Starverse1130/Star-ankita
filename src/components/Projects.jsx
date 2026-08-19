@@ -1,4 +1,4 @@
-import project1 from '../assets/project1.png'
+import project1 from '../assets/projects/project1.png'
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 
 const Projects = ({ darkMode }) => {

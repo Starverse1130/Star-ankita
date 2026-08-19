@@ -1,32 +1,32 @@
-import laravel from '../assets/laravel.png'
-import framer_motion from '../assets/framer_motion.png'
-import vue from '../assets/vue.png'
-import react from '../assets/react.png'
-import tailwind from '../assets/tailwind.png'
-import firebase from '../assets/firebase.png'
-import python from '../assets/python.png'
-import vite from '../assets/vite.png'
+import django from '../assets/icons/django.png'
+import html from '../assets/icons/html.png'
+import css from '../assets/icons/css.png'
+import react from '../assets/icons/react.png'
+import javascript from '../assets/icons/javascript.png'
+import mysql from '../assets/icons/mysql.png'
+import python from '../assets/icons/python.png'
+import git from '../assets/icons/git.png'
 
 
 const Skills = ({ darkMode }) => {
 
     const skills = [
-        {name: 'laravel', icon: laravel, level: 95,
-            color: 'from-orange-500 to-amber-500'},
-        {name: 'framer motion', icon: framer_motion, level: 90,
+        {name: 'HTML', icon: html, level: 90,
             color: 'from-blue-500 to-cyan-500'},
-        {name: 'vue', icon: vue, level: 88,
+        {name: 'CSS', icon: css, level: 88,
             color: 'from-yellow-500 to-amber-500'},
+        {name: 'JavaScript', icon: javascript, level: 92,
+            color: 'from-teal-500 to-cyan-500'},
         {name: 'React', icon: react, level: 85,
             color: 'from-cyan-500 to-blue-500'},
-        {name: 'Tailwind CSS', icon: tailwind, level: 92,
-            color: 'from-teal-500 to-cyan-500'},
-        {name: 'Firebase', icon: firebase, level: 92,
+        {name: 'Git', icon: git, level: 85,
+            color: 'from-red-500 to-orange-500'},
+        {name: 'MySQL', icon: mysql, level: 92,
             color: 'from-green-500 to-emerald-500'},
         {name: 'Python', icon: python, level: 75,
             color: 'from-blue-500 to-indigo-500'},
-        {name: 'vite', icon: vite, level: 85,
-            color: 'from-red-500 to-orange-500'},
+        {name: 'Django', icon: django, level: 95,
+            color: 'from-orange-500 to-amber-500'},
     ];
 
     return (
@@ -35,10 +35,10 @@ const Skills = ({ darkMode }) => {
             style={{
                 backgroundColor: darkMode ? "#111827" : "#f9fafb"
             }}
-            className='py-14 relative overflow-hidden'>
-            <div className='py-14 relative overflow-hidden'>
-                <div className='container px-5 py-14 mx-auto'>
-                    <div className='text-center mb-20' data-aos='fade-up'>
+            className='relative py-24 overflow-hidden'>
+            <div className='relative overflow-hidden'>
+                <div className='container px-5 mx-auto'>
+                    <div className='text-center mb-10' data-aos='fade-up'>
                         <h1
                             className='sm:text-4xl text-3xl font-bold title-font
                             mb-4'
@@ -86,21 +86,12 @@ const Skills = ({ darkMode }) => {
                                     duration-300 hover:-translate-y-2 group
                                     hover:shadow-[0_0_30px_rgb(255,165,0,0.15)]'>
                                     <div className='flex items-center mb-6'>
-                                        <div
-                                            style={{
-                                                background: darkMode
-                                                    ? 'linear-gradient(to bottom right, #374151, #1f2937)'
-                                                    : 'linear-gradient(to bottom right, #f3f4f6, #e5e7eb)',
-                                            }}
-                                            className='w-16 h-16 rounded-xl p-3 flex
-                                            items-center justify-center
+                                        <img
+                                            src={skill.icon}
+                                            alt={skill.name}
+                                            className='w-16 h-16 object-contain
                                             group-hover:scale-110 transition-transform
-                                            duration-300'>
-                                            <img
-                                                src={skill.icon}
-                                                alt={skill.name}
-                                                className='w-full h-full object-contain' />
-                                        </div>
+                                            duration-300' />
                                         <h3
                                             className='text-2xl font-bold ml-4'
                                             style={{
