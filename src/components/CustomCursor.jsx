@@ -58,13 +58,11 @@ const CustomCursor = ({ darkMode }) => {
         }
     }, [])
 
-    if (!darkMode) return null
-
     return (
         <>
             {/* Outer glow ring */}
             <motion.div
-                className='fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] mix-blend-screen hidden lg:block'
+                className='fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] hidden lg:block'
                 animate={{
                     x: position.x - 16,
                     y: position.y - 16,
@@ -79,10 +77,11 @@ const CustomCursor = ({ darkMode }) => {
                 style={{
                     border: isHovering
                         ? '2px solid rgba(249, 115, 22, 0.8)'
-                        : '1.5px solid rgba(249, 115, 22, 0.4)',
+                        : `1.5px solid ${darkMode ? 'rgba(249, 115, 22, 0.4)' : 'rgba(249, 115, 22, 0.3)'}`,
                     background: isHovering
                         ? 'rgba(249, 115, 22, 0.08)'
                         : 'transparent',
+                    mixBlendMode: darkMode ? 'screen' : 'normal',
                     transition: 'background 0.3s, border 0.3s',
                 }}
             />
@@ -101,7 +100,9 @@ const CustomCursor = ({ darkMode }) => {
                 }}
                 style={{
                     background: 'linear-gradient(to right, #f97316, #f59e0b)',
-                    boxShadow: '0 0 10px rgba(249, 115, 22, 0.8)',
+                    boxShadow: darkMode
+                        ? '0 0 10px rgba(249, 115, 22, 0.8)'
+                        : '0 0 8px rgba(249, 115, 22, 0.5)',
                 }}
             />
         </>

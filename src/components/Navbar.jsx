@@ -1,7 +1,15 @@
 import PropTypes from 'prop-types'
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { Sun, Moon, X, Menu } from 'lucide-react';
+
+const NAV_ITEMS = [
+  { name: 'Home', link: '#home' },
+  { name: 'About', link: '#about' },
+  { name: 'Skills', link: '#skills' },
+  { name: 'Projects', link: '#projects' },
+  { name: 'Contact', link: '#contact' }
+];
 
 /**
  * Navbar Component
@@ -17,13 +25,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navItems = [
-    { name: 'Home', link: '#home' },
-    { name: 'About', link: '#about' },
-    { name: 'Skills', link: '#skills' },
-    { name: 'Projects', link: '#projects' },
-    { name: 'Contact', link: '#contact' }
-  ];
+  const navItems = useMemo(() => NAV_ITEMS, []);
 
   // Scroll-based active section tracking
   useEffect(() => {
@@ -49,7 +51,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     })
 
     return () => observer.disconnect()
-  }, [])
+  }, [navItems])
 
   const lightColors = {
     navBg: 'bg-linear-to-br from-orange-200 to-white',

@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import about from '../assets/images/about.png'
 import Counter from './Counter'
+import AboutModal from './AboutModal'
 
 /**
  * About Section Component
@@ -10,6 +12,8 @@ import Counter from './Counter'
  * @param {boolean} props.darkMode - Whether dark mode is active
  */
 const About = ({ darkMode }) => {
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
     return (
         <section id="about" className={`py-16 sm:py-24 overflow-hidden flex
         items-center justify-center px-4 sm:px-6`}>
@@ -47,8 +51,8 @@ const About = ({ darkMode }) => {
                     <header>
                         <h1 className='text-3xl sm:text-4xl lg:text-5xl
                         xl:text-6xl font-bold mb-4 sm:mb-6
-                        text-transparent bg-linear-to-r from-orange-400
-                        to-orange-600 bg-clip-text'
+                        bg-linear-to-r from-orange-400
+                        to-orange-600 bg-clip-text text-transparent'
                         data-aos='fade-up'
                         data-aos-delay='400'>
                             About Me
@@ -56,10 +60,8 @@ const About = ({ darkMode }) => {
                     </header>
                     <p className={`text-sm sm:text-base lg:text-lg
                         xl:text-xl mb-6 sm:mb-8 leading-relaxed
-                        bg-linear-to-r from-orange-900/10 to-orange-900/5
                         p-4 sm:p-6 rounded-xl sm:rounded-2xl
-                        backdrop-blur-sm
-                        ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
+                        ${darkMode ? 'text-gray-300 bg-linear-to-r from-orange-900/10 to-orange-900/5 backdrop-blur-sm' : 'text-gray-600 bg-orange-50/50'}`}
                         data-aos='fade-up'
                         data-aos-delay='500'>
                         I'm a Full Stack Developer with a strong focus on building high-performance
@@ -110,19 +112,21 @@ const About = ({ darkMode }) => {
                         </div>
                         
                     </div>
-                    <a href="#skills" className={`w-full sm:w-auto border-2
+                    <button onClick={() => setIsModalOpen(true)} className={`w-full sm:w-auto border-2
                         border-orange-500 inline-flex items-center
                         justify-center py-2 px-4 sm:px-6
                         hover:shadow-[0_0_40px_rgb(255,165,0,0.7)]
                         rounded-xl text-base sm:text-lg font-semibold
-                        transition-all duration-300 transform
+                        transition-all duration-300 transform cursor-pointer
                         ${darkMode
                         ? 'text-white bg-orange-500/10'
                         : 'text-gray-800 bg-white/90'}`}
                         data-aos='fade-up'
                         data-aos-delay='800'>
                             Learn More
-                        </a>
+                        </button>
+
+                    <AboutModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} darkMode={darkMode} />
                 </article>
             </div>
         </section>

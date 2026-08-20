@@ -18,8 +18,8 @@ import TypingText from './TypingText'
  */
 const Hero = ({ darkMode }) => {
     const socialIcons = [
-        { icon: linkedin, alt: 'Linkedin', url: 'https://www.linkedin.com/in/ankita-ankita-a627323aa/'},
-        { icon: github, alt: 'github', url: 'https://github.com/sonwanisonwani81-lang'},
+        { icon: linkedin, alt: 'Linkedin', url: import.meta.env.VITE_LINKEDIN_URL || 'https://www.linkedin.com/in/ankita-ankita-a627323aa/'},
+        { icon: github, alt: 'github', url: import.meta.env.VITE_GITHUB_URL || 'https://github.com/sonwanisonwani81-lang'},
     ];
 
     const darkTheme = {

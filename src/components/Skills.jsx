@@ -90,7 +90,8 @@ const Skills = ({ darkMode }) => {
                                     className='h-full p-6 rounded-2xl border
                                     hover:border-orange-500/50 transition-all
                                     duration-500 hover:-translate-y-3 group
-                                    hover:shadow-[0_8px_40px_rgb(255,165,0,0.2)]'>
+                                    hover:shadow-[0_8px_40px_rgb(255,165,0,0.2)]
+                                    hover:scale-[1.02]'>
                                     <div className='flex items-center mb-6'>
                                         <div className='relative'>
                                             {/* Icon glow */}
@@ -150,7 +151,7 @@ const Skills = ({ darkMode }) => {
                                     </div>
                                     <div className={`mt-6 pt-4 border-t
                                     transition-colors duration-300
-                                    ${darkMode ? 'border-gray-700 group-hover:border-orange-500/30' : 'border-gray-300 group-hover:border-orange-400/30'}`}>
+                                    ${darkMode ? 'border-gray-700 group-hover:border-orange-500/30' : 'border-gray-200 group-hover:border-orange-400/50'}`}>
                                         <div
                                             className='h-1 rounded-full opacity-60
                                             group-hover:opacity-100 group-hover:w-full

@@ -30,8 +30,8 @@ const Footer = ({ darkMode }) => {
     ]
 
     const socialLinks = [
-        { icon: FaGithub, href: 'https://github.com/sonwanisonwani81-lang', label: 'GitHub' },
-        { icon: FaLinkedin, href: 'https://www.linkedin.com/in/ankita-ankita-a627323aa/', label: 'LinkedIn' },
+        { icon: FaGithub, href: import.meta.env.VITE_GITHUB_URL || 'https://github.com/sonwanisonwani81-lang', label: 'GitHub' },
+        { icon: FaLinkedin, href: import.meta.env.VITE_LINKEDIN_URL || 'https://www.linkedin.com/in/ankita-ankita-a627323aa/', label: 'LinkedIn' },
     ]
 
     return (
@@ -107,7 +107,7 @@ const Footer = ({ darkMode }) => {
                                         hover:text-orange-500 hover:pl-1'
                                         style={{ color: darkMode ? '#9ca3af' : '#6b7280' }}
                                     >
-                                        {link.name}
+                                        <span className='text-orange-500 mr-1'>›</span>{link.name}
                                     </a>
                                 </li>
                             ))}
@@ -149,11 +149,11 @@ const Footer = ({ darkMode }) => {
                             <div className='flex items-center gap-2 justify-center sm:justify-start'>
                                 <Mail className='w-3.5 h-3.5 text-orange-500 shrink-0' />
                                 <a
-                                    href='mailto:ankita@email.com'
+                                    href='mailto:starverse1130@gmail.com'
                                     className='text-sm transition-colors duration-300 hover:text-orange-500'
                                     style={{ color: darkMode ? '#9ca3af' : '#6b7280' }}
                                 >
-                                    ankita@email.com
+                                    starverse1130@gmail.com
                                 </a>
                             </div>
                             <div className='flex items-center gap-2 justify-center sm:justify-start'>

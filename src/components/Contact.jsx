@@ -1,8 +1,15 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { motion, AnimatePresence } from 'framer-motion'
-import { CheckCircle, X, Mail, MapPin, User, MessageSquare, Send, Loader2 } from 'lucide-react'
+import { CheckCircle, X, Mail, MapPin, User, Phone, MessageSquare, Send, Loader2 } from 'lucide-react'
+import emailjs from '@emailjs/browser'
 import contactImg from '../assets/images/contact.png'
+
+// Env variables
+const SHEETDB_URL = import.meta.env.VITE_SHEETDB_URL
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 /**
  * Contact Section Component
@@ -23,19 +30,90 @@ const Contact = ({ darkMode }) => {
     const [showModal, setShowModal] = useState(false)
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [focusedField, setFocusedField] = useState(null)
+    const [errors, setErrors] = useState({})
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
+    const validate = () => {
+        const newErrors = {}
+        if (!formData.firstName.trim()) newErrors.firstName = 'First name is required'
+        if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required'
+
+        if (!formData.email.trim()) {
+            newErrors.email = 'Email is required'
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            newErrors.email = 'Enter a valid email address'
+        }
+
+        if (formData.phone && !/^\d{10}$/.test(formData.phone)) {
+            newErrors.phone = 'Enter a valid 10-digit number'
+        }
+
+        if (!formData.message.trim()) {
+            newErrors.message = 'Message is required'
+        } else if (formData.message.trim().length < 10) {
+            newErrors.message = 'Message must be at least 10 characters'
+        }
+
+        setErrors(newErrors)
+        return Object.keys(newErrors).length === 0
     }
 
-    const handleSubmit = (e) => {
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        // Phone — sirf digits allow karo, max 10
+        if (name === 'phone') {
+            const digits = value.replace(/\D/g, '').slice(0, 10)
+            setFormData({ ...formData, phone: digits })
+        } else {
+            setFormData({ ...formData, [name]: value })
+        }
+        // Clear error on typing
+        if (errors[name]) setErrors({ ...errors, [name]: '' })
+    }
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
+        if (!validate()) return
         setIsSubmitting(true)
-        setTimeout(() => {
-            setIsSubmitting(false)
+
+        try {
+            // 1. Save to Google Sheet
+            await fetch(SHEETDB_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    data: {
+                        firstName: formData.firstName,
+                        lastName: formData.lastName,
+                        email: formData.email,
+                        phone: formData.phone,
+                        message: formData.message,
+                        date: new Date().toLocaleString('en-IN'),
+                    }
+                })
+            })
+
+            // 2. Send thank-you email to user
+            await emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                {
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    email: formData.email,
+                    phone: formData.phone,
+                    message: formData.message,
+                },
+                EMAILJS_PUBLIC_KEY
+            )
+
             setShowModal(true)
             setFormData({ firstName: '', lastName: '', email: '', phone: '', message: '' })
-        }, 1500)
+        } catch (error) {
+            console.error('Error:', error)
+            setErrors({ submit: 'Something went wrong. Please try again.' })
+        } finally {
+            setIsSubmitting(false)
+        }
     }
 
     const closeModal = () => {
@@ -75,7 +153,7 @@ const Contact = ({ darkMode }) => {
                     </h2>
                     <p className="text-base sm:text-lg md:text-xl max-w-xl mx-auto"
                         style={{ color: darkMode ? '#9ca3af' : '#6b7280' }}>
-                        Open to freelance projects, collaborations, and full-time opportunities. Drop me a message and I'll respond within 24 hours.
+                        Open to freelance projects, collaborations, and opportunities. Drop me a message and I'll respond Soon.
                     </p>
                 </div>
 
@@ -99,7 +177,7 @@ const Contact = ({ darkMode }) => {
                                     <Mail className='w-4 h-4 text-white' />
                                 </div>
                                 <span className='text-sm' style={{ color: darkMode ? '#d1d5db' : '#4b5563' }}>
-                                    ankita@email.com
+                                    starverse1130@gmail.com
                                 </span>
                             </motion.div>
                             <motion.div
@@ -164,10 +242,13 @@ const Contact = ({ darkMode }) => {
                                     onChange={handleChange}
                                     onFocus={() => setFocusedField('firstName')}
                                     onBlur={() => setFocusedField(null)}
-                                    style={getInputStyle('firstName')}
+                                    style={{
+                                        ...getInputStyle('firstName'),
+                                        borderColor: errors.firstName ? '#ef4444' : getInputStyle('firstName').borderColor
+                                    }}
                                     className={inputClasses}
-                                    required
                                 />
+                                {errors.firstName && <p className='text-red-500 text-xs mt-1 ml-1'>{errors.firstName}</p>}
                             </div>
 
                             {/* Last Name */}
@@ -183,10 +264,13 @@ const Contact = ({ darkMode }) => {
                                     onChange={handleChange}
                                     onFocus={() => setFocusedField('lastName')}
                                     onBlur={() => setFocusedField(null)}
-                                    style={getInputStyle('lastName')}
+                                    style={{
+                                        ...getInputStyle('lastName'),
+                                        borderColor: errors.lastName ? '#ef4444' : getInputStyle('lastName').borderColor
+                                    }}
                                     className={inputClasses}
-                                    required
                                 />
+                                {errors.lastName && <p className='text-red-500 text-xs mt-1 ml-1'>{errors.lastName}</p>}
                             </div>
                         </div>
 
@@ -203,30 +287,37 @@ const Contact = ({ darkMode }) => {
                                 onChange={handleChange}
                                 onFocus={() => setFocusedField('email')}
                                 onBlur={() => setFocusedField(null)}
-                                style={getInputStyle('email')}
+                                style={{
+                                    ...getInputStyle('email'),
+                                    borderColor: errors.email ? '#ef4444' : getInputStyle('email').borderColor
+                                }}
                                 className={inputClasses}
-                                required
                             />
+                            {errors.email && <p className='text-red-500 text-xs mt-1 ml-1'>{errors.email}</p>}
                         </div>
 
                         {/* Phone */}
                         <div className='relative mb-4'>
-                            <span className='absolute left-3 top-1/2 -translate-y-1/2 text-sm
+                            <Phone className='absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4
                                 transition-colors duration-300'
-                                style={{ color: focusedField === 'phone' ? '#f97316' : (darkMode ? '#6b7280' : '#9ca3af') }}>
-                                +91
-                            </span>
+                                style={{ color: focusedField === 'phone' ? '#f97316' : (darkMode ? '#6b7280' : '#9ca3af') }} />
                             <input
                                 type="tel"
                                 name='phone'
-                                placeholder='Phone Number'
+                                placeholder='Phone Number (10 digits)'
                                 value={formData.phone}
                                 onChange={handleChange}
                                 onFocus={() => setFocusedField('phone')}
                                 onBlur={() => setFocusedField(null)}
-                                style={{ ...getInputStyle('phone'), paddingLeft: '2.75rem' }}
+                                style={{
+                                    ...getInputStyle('phone'),
+                                    borderColor: errors.phone ? '#ef4444' : getInputStyle('phone').borderColor
+                                }}
                                 className={inputClasses}
+                                inputMode='numeric'
+                                maxLength={10}
                             />
+                            {errors.phone && <p className='text-red-500 text-xs mt-1 ml-1'>{errors.phone}</p>}
                         </div>
 
                         {/* Message */}
@@ -242,14 +333,18 @@ const Contact = ({ darkMode }) => {
                                 onChange={handleChange}
                                 onFocus={() => setFocusedField('message')}
                                 onBlur={() => setFocusedField(null)}
-                                style={{ ...getInputStyle('message'), resize: 'none' }}
+                                style={{
+                                    ...getInputStyle('message'),
+                                    resize: 'none',
+                                    borderColor: errors.message ? '#ef4444' : getInputStyle('message').borderColor
+                                }}
                                 className={`${inputClasses} pl-10 pt-3.5`}
-                                required
                             />
                             <span className='absolute bottom-3 right-3 text-xs'
                                 style={{ color: darkMode ? '#4b5563' : '#d1d5db' }}>
                                 {formData.message.length}/500
                             </span>
+                            {errors.message && <p className='text-red-500 text-xs mt-1 ml-1'>{errors.message}</p>}
                         </div>
 
                         {/* Submit Button */}

@@ -8,6 +8,19 @@ import project4 from '../assets/projects/project4.png'
 import project5 from '../assets/projects/project5.png'
 import project6 from '../assets/projects/project6.png'
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
+import { PROJECTS } from '../config/data'
+import ProjectModal from './ProjectModal'
+import ComingSoonModal from './ComingSoonModal'
+
+// Project images map — data.js mein sirf id hai, images yahan hain
+const PROJECT_IMAGES = {
+    1: project1,
+    2: project2,
+    3: project3,
+    4: project4,
+    5: project5,
+    6: project6,
+}
 
 /**
  * Projects Section Component
@@ -18,62 +31,34 @@ import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
  */
 const Projects = ({ darkMode }) => {
     const [activeFilter, setActiveFilter] = useState('All')
+    const [showAll, setShowAll] = useState(false)
+    const [selectedProject, setSelectedProject] = useState(null)
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [comingSoonOpen, setComingSoonOpen] = useState(false)
+    const [comingSoonTitle, setComingSoonTitle] = useState('')
 
-    const projects = [
-        {
-            id: 1,
-            title: 'E-Commerce Platform',
-            desc: 'A modern online store with product listing, cart, and smooth checkout flow. Built with a focus on clean UI and fast performance.',
-            image: project1,
-            tags: ['React', 'Node.js', 'MongoDB'],
-            category: 'Full Stack'
-        },
-        {
-            id: 2,
-            title: 'Recipe Finder App',
-            desc: 'A responsive app to search and save recipes based on ingredients. Features category filters and a clean card-based layout.',
-            image: project2,
-            tags: ['React', 'API Integration', 'Tailwind CSS'],
-            category: 'API'
-        },
-        {
-            id: 3,
-            title: 'Portfolio Website',
-            desc: 'A personal portfolio site showcasing projects and skills with smooth animations. Fully responsive across all devices.',
-            image: project3,
-            tags: ['React', 'Framer Motion', 'CSS3'],
-            category: 'Frontend'
-        },
-        {
-            id: 4,
-            title: 'Task Management App',
-            desc: 'A simple and intuitive to-do app with drag-and-drop task organization. Helps users track daily tasks with ease.',
-            image: project4,
-            tags: ['React', 'JavaScript', 'LocalStorage'],
-            category: 'Frontend'
-        },
-        {
-            id: 5,
-            title: 'Weather Dashboard',
-            desc: 'A real-time weather app showing current conditions and a 5-day forecast. Clean UI with dynamic backgrounds based on weather.',
-            image: project5,
-            tags: ['React', 'OpenWeather API', 'CSS3'],
-            category: 'API'
-        },
-        {
-            id: 6,
-            title: 'Blog Website',
-            desc: 'A minimal blogging platform with category-based posts and a clean reading experience. Fully responsive and fast-loading.',
-            image: project6,
-            tags: ['React', 'JavaScript', 'Tailwind CSS'],
-            category: 'Frontend'
-        }
-    ]
+    const openComingSoon = (title) => {
+        setComingSoonTitle(title)
+        setComingSoonOpen(true)
+    }
+
+    const openModal = (project) => {
+        setSelectedProject(project)
+        setIsModalOpen(true)
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false)
+        setSelectedProject(null)
+    }
+
+    const projects = PROJECTS
 
     const filters = ['All', ...new Set(projects.map(p => p.category))]
     const filteredProjects = activeFilter === 'All'
         ? projects
         : projects.filter(p => p.category === activeFilter)
+    const visibleProjects = showAll ? filteredProjects : filteredProjects.slice(0, 3)
 
     return (
         <section
@@ -116,7 +101,7 @@ const Projects = ({ darkMode }) => {
                     {filters.map((filter) => (
                         <button
                             key={filter}
-                            onClick={() => setActiveFilter(filter)}
+                            onClick={() => { setActiveFilter(filter); setShowAll(false) }}
                             className={`px-5 py-2 rounded-xl text-sm font-semibold
                             transition-all duration-300 border
                             ${activeFilter === filter
@@ -135,7 +120,7 @@ const Projects = ({ darkMode }) => {
                 <div className='grid grid-cols-1 md:grid-cols-2
                 lg:grid-cols-3 gap-5 mb-12'>
                     <AnimatePresence mode='popLayout'>
-                    {filteredProjects.map((project, index) => (
+                    {visibleProjects.map((project, index) => (
                         <motion.div
                             key={project.id}
                             layout
@@ -151,11 +136,12 @@ const Projects = ({ darkMode }) => {
                             }}
                             className='group rounded-xl border duration-500
                             hover:border-orange-500/50 transition-all
-                            hover:-translate-y-2 hover:shadow-[0_12px_40px_rgb(255,165,0,0.15)]'>
+                            hover:-translate-y-2 hover:shadow-[0_12px_40px_rgb(255,165,0,0.15)]
+                            hover:scale-[1.01]'>
                             {/* Image with overlay */}
                             <div className='relative h-36 sm:h-44 overflow-hidden rounded-t-xl'>
                                 <img
-                                    src={project.image}
+                                    src={PROJECT_IMAGES[project.id]}
                                     alt={project.title}
                                     loading='lazy'
                                     decoding='async'
@@ -171,6 +157,12 @@ const Projects = ({ darkMode }) => {
                                         View Project →
                                     </span>
                                 </div>
+                                {/* Click overlay */}
+                                <button
+                                    onClick={() => openModal(project)}
+                                    className='absolute inset-0 z-10 cursor-pointer'
+                                    aria-label={`View ${project.title}`}
+                                />
                             </div>
 
                             <div className='p-5'>
@@ -209,9 +201,10 @@ const Projects = ({ darkMode }) => {
 
                                 <div className='flex gap-2'>
                                     <a
-                                        href="https://github.com/sonwanisonwani81-lang"
+                                        href={project.github}
                                         target='_blank'
                                         rel='noopener noreferrer'
+                                        onClick={(e) => e.stopPropagation()}
                                         style={{
                                             backgroundColor: darkMode ? '#374151' : '#f3f4f6',
                                             color: darkMode ? 'white' : '#374151'
@@ -226,8 +219,16 @@ const Projects = ({ darkMode }) => {
 
                                     {/* Demo  */}
                                     <a
-                                        href="#"
-                                        onClick={(e) => e.preventDefault()}
+                                        href={project.live}
+                                        target='_blank'
+                                        rel='noopener noreferrer'
+                                        onClick={(e) => {
+                                            e.stopPropagation()
+                                            if (project.live === '#') {
+                                                e.preventDefault()
+                                                openComingSoon(project.title)
+                                            }
+                                        }}
                                         style={{
                                             background: 'linear-gradient(to right, #f97316, #f59e0b)',
                                         }}
@@ -246,25 +247,45 @@ const Projects = ({ darkMode }) => {
                     </AnimatePresence>
                 </div>
 
+                {/* Project Preview Modal */}
+                {selectedProject && (
+                    <ProjectModal
+                        isOpen={isModalOpen}
+                        onClose={closeModal}
+                        project={selectedProject}
+                        darkMode={darkMode}
+                        image={PROJECT_IMAGES[selectedProject.id]}
+                        onLiveDemo={() => openComingSoon(selectedProject.title)}
+                    />
+                )}
+
+                {/* Coming Soon Modal */}
+                <ComingSoonModal
+                    isOpen={comingSoonOpen}
+                    onClose={() => setComingSoonOpen(false)}
+                    title={comingSoonTitle}
+                    darkMode={darkMode}
+                />
+
                 <div className='text-center mt-10'>
-                    <a
-                        href="https://github.com/sonwanisonwani81-lang"
-                        target='_blank'
-                        rel='noopener noreferrer'
+                    <motion.button
+                        onClick={() => setShowAll(!showAll)}
+                        whileHover={{ scale: 1.04 }}
+                        whileTap={{ scale: 0.97 }}
                         style={{
                             background: 'linear-gradient(to right, #f97316, #f59e0b)',
                         }}
                         className='inline-flex items-center font-semibold
                         gap-2 px-7 py-4 text-white
                         text-sm rounded-xl hover:shadow-lg
-                        hover:shadow-orange-500/25 transition-all'
+                        hover:shadow-orange-500/25 transition-all cursor-pointer'
                         data-aos='zoom-in'
                         data-aos-delay='400'
                     >
                         <FaGithub />
-                        <span>View All Projects</span>
+                        <span>{showAll ? 'Show Less' : 'View All Projects'}</span>
                         <FaExternalLinkAlt className='text-sm'/>
-                    </a>
+                    </motion.button>
                 </div>
             </div>
         </section>

@@ -32,7 +32,7 @@ export const COLORS = {
     800: '#1f2937',
     900: '#111827',
   },
-} as const
+}
 
 // ─── Gradients ───────────────────────────────────────────────────
 export const GRADIENTS = {
@@ -40,7 +40,7 @@ export const GRADIENTS = {
   primaryHover: 'linear-gradient(to right, #ea580c, #d97706)',
   heroDark: 'linear-gradient(to right, #f97316, #fb923c, #f59e0b)',
   heroLight: 'linear-gradient(to right, #f97316, #fb923c, #f59e0b)',
-} as const
+}
 
 // ─── Dark Mode Colors ────────────────────────────────────────────
 export const DARK_THEME = {
@@ -66,7 +66,7 @@ export const DARK_THEME = {
     textSecondary: 'text-gray-300',
     textActive: 'text-orange-400',
   },
-} as const
+}
 
 // ─── Light Mode Colors ───────────────────────────────────────────
 export const LIGHT_THEME = {
@@ -92,7 +92,7 @@ export const LIGHT_THEME = {
     textSecondary: 'text-gray-800',
     textActive: 'text-orange-600',
   },
-} as const
+}
 
 // ─── Helper: Get theme based on darkMode ─────────────────────────
 export const getTheme = (darkMode) => darkMode ? DARK_THEME : LIGHT_THEME
@@ -103,7 +103,7 @@ export const Z_INDEX = {
   progressBar: 100,
   modal: 50,
   cursor: 9999,
-} as const
+}
 
 // ─── Animation Durations ─────────────────────────────────────────
 export const DURATION = {
@@ -111,4 +111,4 @@ export const DURATION = {
   normal: 300,
   slow: 500,
   verySlow: 700,
-} as const
+}
