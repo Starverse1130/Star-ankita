@@ -20,6 +20,7 @@
 ## 📋 Table of Contents
 
 - [About](#-about)
+- [Screenshots](#-screenshots)
 - [Tech Stack](#-tech-stack)
 - [Features](#-features)
 - [Getting Started](#-getting-started)
@@ -37,6 +38,46 @@
 A modern, responsive portfolio website built with **React** and **Tailwind CSS**. Features smooth animations, dark/light mode, contact form with email integration, and a clean, professional design.
 
 **Live URL:** [ankita-portfolio.vercel.app](#)
+
+---
+
+## 📸 Screenshots
+
+<details>
+<summary><b>🖥️ Desktop View</b></summary>
+
+<table>
+<tr>
+<td align="center">
+<b>🌙 Dark Mode</b><br/>
+<img src="src/assets/screenshots/desktop-dark.jpg" alt="Desktop Dark Mode" width="600" />
+</td>
+<td align="center">
+<b>☀️ Light Mode</b><br/>
+<img src="src/assets/screenshots/desktop-light.jpg" alt="Desktop Light Mode" width="600" />
+</td>
+</tr>
+</table>
+
+</details>
+
+<details>
+<summary><b>📱 Mobile View</b></summary>
+
+<table>
+<tr>
+<td align="center">
+<b>🌙 Dark Mode</b><br/>
+<img src="src/assets/screenshots/mobile-dark.jpg" alt="Mobile Dark Mode" width="200" />
+</td>
+<td align="center">
+<b>☀️ Light Mode</b><br/>
+<img src="src/assets/screenshots/mobile-light.jpg" alt="Mobile Light Mode" width="200" />
+</td>
+</tr>
+</table>
+
+</details>
 
 ---
 
