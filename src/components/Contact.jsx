@@ -157,45 +157,14 @@ const Contact = ({ darkMode }) => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 items-center">
-                    <div className='flex flex-col items-center order-2 lg:order-1 gap-8' data-aos='fade-right'>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    {/* Illustration - Visible on all sizes, stacks above form on mobile */}
+                    <div className='flex lg:col-span-5 flex-col items-center gap-8' data-aos='fade-right'>
                         <img src={contactImg} alt="Contact"
                             loading='lazy'
                             decoding='async'
-                            className='w-full max-w-xs sm:max-w-sm lg:max-w-md h-auto object-contain' />
-                        {/* Contact Info Cards */}
-                        <div className='flex flex-wrap justify-center gap-4'>
-                            <motion.div
-                                whileHover={{ scale: 1.05, y: -2 }}
-                                className='flex items-center gap-3 px-5 py-3 rounded-xl cursor-default'
-                                style={{
-                                    background: darkMode ? 'rgba(31,41,55,0.5)' : 'rgba(255,255,255,0.8)',
-                                    border: '1px solid ' + (darkMode ? '#374151' : '#e5e7eb')
-                                }}>
-                                <div className='w-8 h-8 rounded-lg flex items-center justify-center'
-                                    style={{ background: 'linear-gradient(to right, #f97316, #f59e0b)' }}>
-                                    <Mail className='w-4 h-4 text-white' />
-                                </div>
-                                <span className='text-sm' style={{ color: darkMode ? '#d1d5db' : '#4b5563' }}>
-                                    starverse1130@gmail.com
-                                </span>
-                            </motion.div>
-                            <motion.div
-                                whileHover={{ scale: 1.05, y: -2 }}
-                                className='flex items-center gap-3 px-5 py-3 rounded-xl cursor-default'
-                                style={{
-                                    background: darkMode ? 'rgba(31,41,55,0.5)' : 'rgba(255,255,255,0.8)',
-                                    border: '1px solid ' + (darkMode ? '#374151' : '#e5e7eb')
-                                }}>
-                                <div className='w-8 h-8 rounded-lg flex items-center justify-center'
-                                    style={{ background: 'linear-gradient(to right, #f97316, #f59e0b)' }}>
-                                    <MapPin className='w-4 h-4 text-white' />
-                                </div>
-                                <span className='text-sm' style={{ color: darkMode ? '#d1d5db' : '#4b5563' }}>
-                                    India
-                                </span>
-                            </motion.div>
-                        </div>
+                            className='w-full max-w-[200px] sm:max-w-[280px] lg:max-w-sm h-auto object-contain' />
                     </div>
 
                     {/* Form Card */}
@@ -212,7 +181,7 @@ const Contact = ({ darkMode }) => {
                             borderColor: darkMode ? '#374151' : '#e5e7eb',
                             backdropFilter: 'blur(10px)',
                         }}
-                        className='rounded-2xl p-5 sm:p-6 md:p-8 border shadow-xl order-1 lg:order-2
+                        className='rounded-2xl p-4 sm:p-6 md:p-8 border shadow-xl lg:col-span-7
                         hover:shadow-2xl transition-shadow duration-500'
                         data-aos='fade-left'>
 

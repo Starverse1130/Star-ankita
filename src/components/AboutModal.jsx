@@ -133,7 +133,7 @@ const AboutModal = ({ isOpen, onClose, darkMode }) => {
             animate='visible'
             exit='exit'
             onClick={(e) => e.stopPropagation()}
-            className={`relative w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden ${
+            className={`relative w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden text-left ${
               darkMode
                 ? 'bg-gray-900 border border-white/10'
                 : 'bg-white border border-gray-200'
@@ -156,7 +156,7 @@ const AboutModal = ({ isOpen, onClose, darkMode }) => {
               </button>
 
               {/* Header Content: Image + Name/Tagline */}
-              <div className='relative flex items-center gap-5 p-5 sm:p-6'>
+              <div className='relative flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 p-5 sm:p-6 text-center sm:text-left'>
                 <div className='w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-4 border-white shadow-lg shrink-0'>
                   <img
                     src={about}
@@ -164,14 +164,14 @@ const AboutModal = ({ isOpen, onClose, darkMode }) => {
                     className='w-full h-full object-cover'
                   />
                 </div>
-                <div className='flex flex-col justify-center min-w-0'>
-                  <h2 className='text-xl sm:text-2xl font-bold text-white truncate'>
+                <div className='flex flex-col justify-center items-center sm:items-start min-w-0'>
+                  <h2 className='text-xl sm:text-2xl font-bold text-white truncate w-full'>
                     {data.name}
                   </h2>
-                  <p className='text-white/90 font-semibold text-sm sm:text-base mt-0.5'>
+                  <p className='text-white/90 font-semibold text-sm sm:text-base mt-0.5 w-full'>
                     {data.title}
                   </p>
-                  <p className='text-white/70 text-xs sm:text-sm mt-1 italic truncate'>
+                  <p className='text-white/70 text-xs sm:text-sm mt-1 italic w-full whitespace-normal'>
                     {data.tagline}
                   </p>
                 </div>
@@ -180,6 +180,7 @@ const AboutModal = ({ isOpen, onClose, darkMode }) => {
 
             {/* ── Body ─────────────────────────────────────── */}
             <div className='px-6 sm:px-8 pt-6 pb-8'>
+
 
               {/* Quick Info Row */}
               <motion.div

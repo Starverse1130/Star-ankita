@@ -52,21 +52,21 @@ const Footer = ({ darkMode }) => {
 
             <div className='container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6'>
                 {/* 4 Column Grid */}
-                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 mb-10'>
+                <div className='grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 mb-10'>
 
                     {/* Column 1: Brand */}
-                    <div className='sm:col-span-2 lg:col-span-1 text-center sm:text-left'>
+                    <div className='col-span-2 lg:col-span-1 text-center lg:text-left'>
                         <h3 className='text-2xl font-bold mb-3'>
                             <span className='text-orange-500'>Portfolio</span>
                             <span style={{ color: darkMode ? 'white' : '#1f2937' }}>. </span>
                         </h3>
                         <p
-                            className='text-sm mb-4 max-w-xs mx-auto sm:mx-0'
+                            className='text-sm mb-4 max-w-xs mx-auto lg:mx-0'
                             style={{ color: darkMode ? '#9ca3af' : '#6b7280' }}
                         >
                             Crafting digital experiences with clean code and creative design.
                         </p>
-                        <div className='flex items-center gap-3 justify-center sm:justify-start'>
+                        <div className='flex items-center gap-3 justify-center lg:justify-start'>
                             {socialLinks.map((social) => (
                                 <motion.a
                                     key={social.label}
@@ -91,54 +91,58 @@ const Footer = ({ darkMode }) => {
                     </div>
 
                     {/* Column 2: Quick Links */}
-                    <div className='text-center sm:text-left'>
-                        <h4
-                            className='text-sm font-semibold uppercase tracking-wider mb-4'
-                            style={{ color: darkMode ? 'white' : '#1f2937' }}
-                        >
-                            Quick Links
-                        </h4>
-                        <ul className='space-y-2.5'>
-                            {navLinks.map((link) => (
-                                <li key={link.name}>
-                                    <a
-                                        href={link.href}
-                                        className='text-sm transition-all duration-300
-                                        hover:text-orange-500 hover:pl-1'
-                                        style={{ color: darkMode ? '#9ca3af' : '#6b7280' }}
-                                    >
-                                        <span className='text-orange-500 mr-1'>›</span>{link.name}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
+                    <div className='col-span-1 flex flex-col items-center lg:items-start'>
+                        <div>
+                            <h4
+                                className='text-sm font-semibold uppercase tracking-wider mb-4 text-center lg:text-left'
+                                style={{ color: darkMode ? 'white' : '#1f2937' }}
+                            >
+                                Quick Links
+                            </h4>
+                            <ul className='space-y-2.5 text-left'>
+                                {navLinks.map((link) => (
+                                    <li key={link.name}>
+                                        <a
+                                            href={link.href}
+                                            className='text-sm transition-all duration-300
+                                            hover:text-orange-500 hover:pl-1 block'
+                                            style={{ color: darkMode ? '#9ca3af' : '#6b7280' }}
+                                        >
+                                            <span className='text-orange-500 mr-1'>›</span>{link.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
 
                     {/* Column 3: Services */}
-                    <div className='text-center sm:text-left'>
-                        <h4
-                            className='text-sm font-semibold uppercase tracking-wider mb-4'
-                            style={{ color: darkMode ? 'white' : '#1f2937' }}
-                        >
-                            Services
-                        </h4>
-                        <ul className='space-y-2.5'>
-                            {services.map((service) => (
-                                <li key={service.name} className='flex items-center gap-2 justify-center sm:justify-start'>
-                                    <service.icon className='w-3.5 h-3.5 text-orange-500 shrink-0' />
-                                    <span
-                                        className='text-sm'
-                                        style={{ color: darkMode ? '#9ca3af' : '#6b7280' }}
-                                    >
-                                        {service.name}
-                                    </span>
-                                </li>
-                            ))}
-                        </ul>
+                    <div className='col-span-1 flex flex-col items-center lg:items-start'>
+                        <div>
+                            <h4
+                                className='text-sm font-semibold uppercase tracking-wider mb-4 text-center lg:text-left'
+                                style={{ color: darkMode ? 'white' : '#1f2937' }}
+                            >
+                                Services
+                            </h4>
+                            <ul className='space-y-2.5 text-left'>
+                                {services.map((service) => (
+                                    <li key={service.name} className='flex items-center gap-2 justify-start'>
+                                        <service.icon className='w-3.5 h-3.5 text-orange-500 shrink-0' />
+                                        <span
+                                            className='text-sm'
+                                            style={{ color: darkMode ? '#9ca3af' : '#6b7280' }}
+                                        >
+                                            {service.name}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
 
                     {/* Column 4: Contact + CTA */}
-                    <div className='text-center sm:text-left'>
+                    <div className='col-span-2 lg:col-span-1 text-center lg:text-left mt-4 lg:mt-0'>
                         <h4
                             className='text-sm font-semibold uppercase tracking-wider mb-4'
                             style={{ color: darkMode ? 'white' : '#1f2937' }}
@@ -146,7 +150,7 @@ const Footer = ({ darkMode }) => {
                             Get In Touch
                         </h4>
                         <div className='space-y-2.5 mb-5'>
-                            <div className='flex items-center gap-2 justify-center sm:justify-start'>
+                            <div className='flex items-center gap-2 justify-center lg:justify-start'>
                                 <Mail className='w-3.5 h-3.5 text-orange-500 shrink-0' />
                                 <a
                                     href='mailto:starverse1130@gmail.com'
@@ -156,7 +160,7 @@ const Footer = ({ darkMode }) => {
                                     starverse1130@gmail.com
                                 </a>
                             </div>
-                            <div className='flex items-center gap-2 justify-center sm:justify-start'>
+                            <div className='flex items-center gap-2 justify-center lg:justify-start'>
                                 <MapPin className='w-3.5 h-3.5 text-orange-500 shrink-0' />
                                 <span
                                     className='text-sm'
@@ -202,30 +206,13 @@ const Footer = ({ darkMode }) => {
                     >
                         © {currentYear} All rights reserved.
                     </p>
-                    <div className='flex items-center gap-4'>
-                        <p
-                            className='text-xs flex items-center gap-1'
-                            style={{ color: darkMode ? '#6b7280' : '#9ca3af' }}
-                        >
-                            Crafted with <FaHeart className='text-red-500 text-[10px]' /> by
-                            <span className='text-orange-500 font-semibold'> Ankita</span>
-                        </p>
-                        <motion.a
-                            href='#home'
-                            whileHover={{ scale: 1.1, y: -2 }}
-                            whileTap={{ scale: 0.9 }}
-                            className='w-8 h-8 rounded-full flex items-center
-                            justify-center transition-all duration-300
-                            hover:shadow-[0_0_15px_rgba(249,115,22,0.4)]'
-                            style={{
-                                background: 'linear-gradient(to right, #f97316, #f59e0b)',
-                                color: 'white'
-                            }}
-                            aria-label='Back to top'
-                        >
-                            <FaArrowUp className='w-3 h-3' />
-                        </motion.a>
-                    </div>
+                    <p
+                        className='text-xs flex items-center gap-1'
+                        style={{ color: darkMode ? '#6b7280' : '#9ca3af' }}
+                    >
+                        Crafted with <FaHeart className='text-red-500 text-[10px]' /> by
+                        <span className='text-orange-500 font-semibold'> Ankita</span>
+                    </p>
                 </div>
             </div>
         </footer>

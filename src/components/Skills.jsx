@@ -71,13 +71,13 @@ const Skills = ({ darkMode }) => {
                         </p>
                     </div>
                     <div
-                        className='flex flex-wrap -m-4'
+                        className='flex flex-wrap -m-2 sm:-m-4'
                         data-aos='fade-up'
                         data-aos-delay='200'>
                         {skills.map((skill, index) => (
                             <div
                                 key={index}
-                                className='p-4 lg:w-1/4 md:w-1/2 w-full'
+                                className='p-2 sm:p-4 lg:w-1/4 md:w-1/2 w-1/2'
                                 data-aos='fade-up'
                                 data-aos-delay={`${300 + index * 100}`}>
                                 <div
@@ -87,12 +87,12 @@ const Skills = ({ darkMode }) => {
                                             : 'linear-gradient(to bottom right, #ffffff, #f3f4f6)',
                                         borderColor: darkMode ? '#374151' : '#e5e7eb'
                                     }}
-                                    className='h-full p-6 rounded-2xl border
+                                    className='h-full p-4 sm:p-6 rounded-2xl border
                                     hover:border-orange-500/50 transition-all
                                     duration-500 hover:-translate-y-3 group
                                     hover:shadow-[0_8px_40px_rgb(255,165,0,0.2)]
                                     hover:scale-[1.02]'>
-                                    <div className='flex items-center mb-6'>
+                                    <div className='flex flex-col sm:flex-row items-center mb-4 sm:mb-6 text-center sm:text-left'>
                                         <div className='relative'>
                                             {/* Icon glow */}
                                             <div className='absolute inset-0 bg-orange-500/20 rounded-full
@@ -103,12 +103,12 @@ const Skills = ({ darkMode }) => {
                                                 alt={skill.name}
                                                 loading='lazy'
                                                 decoding='async'
-                                                className='relative w-16 h-16 object-contain
+                                                className='relative w-12 h-12 sm:w-16 sm:h-16 object-contain
                                                 group-hover:scale-125 group-hover:rotate-6
                                                 transition-all duration-500 ease-out' />
                                         </div>
                                         <h3
-                                            className='text-2xl font-bold ml-4
+                                            className='text-lg sm:text-2xl font-bold mt-2 sm:mt-0 sm:ml-4
                                             group-hover:text-orange-400 transition-colors
                                             duration-300'
                                             style={{
@@ -120,7 +120,7 @@ const Skills = ({ darkMode }) => {
                                     <div className='mb-2 flex justify-between
                                     items-center'>
                                         <span
-                                            className='font-medium'
+                                            className='font-medium text-xs sm:text-sm'
                                             style={{
                                                 color: darkMode ? '#d1d5db' : '#6b7280'
                                             }}>
@@ -133,12 +133,12 @@ const Skills = ({ darkMode }) => {
                                                 backgroundClip: 'text',
                                                 color: 'transparent'
                                             }}
-                                            className='font-bold'>
+                                            className='font-bold text-xs sm:text-sm'>
                                             {skill.level}%
                                         </span>
                                     </div>
                                     <div
-                                        className='w-full rounded-full h-3 overflow-hidden'
+                                        className='w-full rounded-full h-2.5 sm:h-3 overflow-hidden'
                                         style={{
                                             backgroundColor: darkMode ? '#374151' : '#e5e7eb'
                                         }}>
@@ -149,7 +149,7 @@ const Skills = ({ darkMode }) => {
                                             style={{ width: `${skill.level}%` }}>
                                         </div>
                                     </div>
-                                    <div className={`mt-6 pt-4 border-t
+                                    <div className={`mt-4 sm:mt-6 pt-3 sm:pt-4 border-t
                                     transition-colors duration-300
                                     ${darkMode ? 'border-gray-700 group-hover:border-orange-500/30' : 'border-gray-200 group-hover:border-orange-400/50'}`}>
                                         <div
@@ -165,6 +165,7 @@ const Skills = ({ darkMode }) => {
                             </div>
                         ))}
                     </div>
+
                 </div>
             </div>
         </section>

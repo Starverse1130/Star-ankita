@@ -95,15 +95,15 @@ const Projects = ({ darkMode }) => {
 
                 {/* Filter Buttons */}
                 <div
-                    className='flex flex-wrap justify-center gap-3 mb-10'
+                    className='flex flex-wrap justify-center gap-2 sm:gap-3 mb-10'
                     data-aos='fade-up'
                     data-aos-delay='200'>
                     {filters.map((filter) => (
                         <button
                             key={filter}
                             onClick={() => { setActiveFilter(filter); setShowAll(false) }}
-                            className={`px-5 py-2 rounded-xl text-sm font-semibold
-                            transition-all duration-300 border
+                            className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold
+                            transition-all duration-300 border cursor-pointer
                             ${activeFilter === filter
                                 ? 'bg-linear-to-r from-orange-500 to-amber-500 text-white border-transparent shadow-lg shadow-orange-500/25'
                                 : darkMode
@@ -127,6 +127,7 @@ const Projects = ({ darkMode }) => {
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.9 }}
+                            onClick={() => openModal(project)}
                             transition={{ duration: 0.3, delay: index * 0.05 }}
                             style={{
                                 background: darkMode
@@ -137,7 +138,7 @@ const Projects = ({ darkMode }) => {
                             className='group rounded-xl border duration-500
                             hover:border-orange-500/50 transition-all
                             hover:-translate-y-2 hover:shadow-[0_12px_40px_rgb(255,165,0,0.15)]
-                            hover:scale-[1.01]'>
+                            hover:scale-[1.01] cursor-pointer'>
                             {/* Image with overlay */}
                             <div className='relative h-36 sm:h-44 overflow-hidden rounded-t-xl'>
                                 <img
@@ -157,12 +158,6 @@ const Projects = ({ darkMode }) => {
                                         View Project →
                                     </span>
                                 </div>
-                                {/* Click overlay */}
-                                <button
-                                    onClick={() => openModal(project)}
-                                    className='absolute inset-0 z-10 cursor-pointer'
-                                    aria-label={`View ${project.title}`}
-                                />
                             </div>
 
                             <div className='p-5'>

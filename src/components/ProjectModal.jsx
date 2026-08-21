@@ -89,12 +89,13 @@ const ProjectModal = ({ isOpen, onClose, project, darkMode, image, onLiveDemo })
             animate='visible'
             exit='exit'
             onClick={(e) => e.stopPropagation()}
-            className={`relative w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden mb-8 ${
+            className={`relative w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden mb-8 text-left ${
               darkMode
                 ? 'bg-gray-900 border border-white/10'
                 : 'bg-white border border-gray-200'
             }`}
           >
+
             {/* ── Close Button ──────────────────────────────── */}
             <button
               onClick={onClose}
